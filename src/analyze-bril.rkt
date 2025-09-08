@@ -2,26 +2,34 @@
 (require json)
 (require racket/pretty)
 
-(define program (read-json (current-input-port)))
+;; Helpers
+(define (label? lin)
+  (hash-has-key? lin 'label))  
 
-(define functions (hash-ref program 'functions))
+(define (insn? lin)
+  (hash-has-key? lin 'op))  
 
-(define (process-op o acc)
-  (if (hash-has-key? acc o) (hash-set acc o (add1 (hash-ref acc o)))
-    (hash-set acc o 1)))
+;; Histogram construction
+(define (process-op op acc)
+  (if (hash-has-key? acc op) 
+    (hash-set acc op (add1 (hash-ref acc op)))
+    (hash-set acc op 1)))
 
-(define (process-instruction i acc)
-  (match i
-    [(hash 'label _ #:open) 
+(define (process-lin lin acc)
+  (match lin
+    [(? label? lin) 
      acc]
-    [(hash 'op _ #:open)
-     (process-op (hash-ref i 'op) acc)]))  
+    [(? insn? lin)
+     (process-op (hash-ref lin 'op) acc)]))  
+
+(define program (read-json (current-input-port)))
+(define functions (hash-ref program 'functions))
 
 (for ([f functions])
   (printf "Function: ~a\n" (hash-ref f 'name))
-  (define acc (foldl process-instruction (hash) (hash-ref f 'instrs)))
+  (define acc (foldl process-lin (hash) (hash-ref f 'instrs)))
   ;;sort keys alphabetically and print
-  (for ([key (sort (hash-keys acc) string<?)]) 
-    (printf "~a:~a\n" key (hash-ref acc key))))
+  (for ([op (sort (hash-keys acc) string<?)]) 
+    (printf "~a:~a\n" op (hash-ref acc op))))
 
 

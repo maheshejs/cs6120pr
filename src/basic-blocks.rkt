@@ -4,113 +4,122 @@
 (require racket/pretty)
 (require racket/system)
 
-(define program (read-json (current-input-port)))
+;; Helpers
+(define (terminator? op)
+  (member (string->symbol op) '(br jmp ret)))
 
-(define functions (hash-ref program 'functions))
+(define (branch? op)
+  (member (string->symbol op) '(br jmp)))
 
-(define (terminator? t)
-  (member (string->symbol t) '(br jmp ret)))
+(define (label? lin)
+  (hash-has-key? lin 'label))  
 
-(define (branch? b)
-  (member (string->symbol b) '(br jmp)))
+(define (insn? lin)
+  (hash-has-key? lin 'op))  
 
-(define (is-label? lin)
-  (match lin
-    [(hash 'label _ #:open) 
-     #t]
-    [(hash 'op _ #:open)
-     #f]))  
+(define (label->string label)
+  (hash-ref label 'label))  
 
-(define (expose-bb-label l state)
-  (printf "  label: ~a\n" (hash-ref l 'label))
-  (define key (car state))
-  (define bb (cdr state))
-  (if (hash-has-key? bb key)
-    (if (andmap is-label? (hash-ref bb key)) 
-      (cons key (hash-set bb key (append (hash-ref bb key '()) (list l))))
-      (cons (add1 key) (hash-set bb (add1 key) (list l))))
-    (cons key (hash-set bb key (list l)))))
+(define (insn->string insn)
+  (hash-ref insn 'op))  
 
-(define (expose-bb-insn i state)
-  (printf "  op: ~a\n" (hash-ref i 'op))
-  (define key (car state))
-  (define bb (cdr state))
-  (match (hash-ref i 'op)
-    [(? terminator? t)
-     (cons (add1 key) (hash-set bb key (append (hash-ref bb key '()) (list i))))]
-    [_
-     (cons key (hash-set bb key (append (hash-ref bb key '()) (list i))))]))
+;; Printing 
+(define (print-label label)
+  (printf "~a, " (hash-ref label 'label)))
 
-(define (expose-bb-lin lin state)
-  (match lin
-    [(hash 'label _ #:open) 
-     (expose-bb-label lin state)]
-    [(hash 'op _ #:open)
-     (expose-bb-insn lin state)]))  
-
-(define (print-label l)
-  (printf "~a, " (hash-ref l 'label)))
-
-(define (print-insn i)
-  (printf "~a, " (hash-ref i 'op)))
+(define (print-insn insn)
+  (printf "~a, " (hash-ref insn 'op)))
 
 (define (print-lin lin)
   (match lin
-    [(hash 'label _ #:open) 
-     (print-label lin)]
-    [(hash 'op _ #:open)
-     (print-insn lin)]))
+    [(? label? lin) (print-label lin)]
+    [(? insn? lin)  (print-insn lin)]))
 
-(define (print-bb bb) 
-  (for ([(key lins) (in-hash bb)])
+(define (print-bb bbs)
+  (define sorted-keys (sort (hash-keys bbs) <))
+  (for ([key sorted-keys])
+    (define lins (hash-ref bbs key))
     (printf "~a:\t" key)
     (for-each print-lin lins)
     (printf "\n")))
 
-(define (label->key lbl bb)
-  (for/first ([(key lins) (in-hash bb)]
-              #:when (and (hash-has-key? (first lins) 'label) 
-                          (equal? (hash-ref (first lins) 'label) lbl)))
+;; Basic block construction
+(define (expose-bb-label label acc)
+  (printf "  label: ~a\n" (label->string label))
+  (define key (car acc))
+  (define bbs (cdr acc))
+  (define bb (hash-ref bbs key '()))
+  (if (empty? bb)
+    (cons (identity key) (hash-set bbs key (list label)))
+    (if (andmap label? bb) 
+      (cons (identity key) (hash-set bbs key (append bb (list label))))
+      (cons (add1 key) (hash-set bbs (add1 key) (list label))))))
+
+(define (expose-bb-insn insn acc)
+  (printf "  op: ~a\n" (insn->string insn))
+  (define key (car acc))
+  (define bbs (cdr acc))
+  (define bb (hash-ref bbs key '()))
+  (match (insn->string insn)
+    [(? terminator? op)
+     (cons (add1 key) (hash-set bbs key (append bb (list insn))))]
+    [else
+     (cons (identity key) (hash-set bbs key (append bb (list insn))))]))
+
+(define (expose-bb-lin lin acc)
+  (match lin
+    [(? label? lin) (expose-bb-label lin acc)]
+    [(? insn? lin)  (expose-bb-insn lin acc)]))  
+
+;; Control flow graph construction
+(define (label->bb-key label-string bbs)
+  (for/first ([(key lins) (in-hash bbs)]
+              #:when (let ([labels (filter label? lins)])
+                           (ormap (compose (curry equal? label-string) label->string) labels)))
     key))
 
-(define (update-cfg-label g bb key l)
-  (void))
-
-(define (update-cfg-insn g bb key i)
-  (match (hash-ref i 'op)
-    [(? branch? b) 
+(define (update-cfg-insn insn key g bbs)
+  (match (hash-ref insn 'op)
+    [(? branch? op) 
      (define pred key)
-     (define succs (map (curryr label->key bb) (hash-ref i 'labels)))
-     (map (curry add-directed-edge! g pred) succs)]
-    [_
+     (define succs (map (curryr label->bb-key bbs) (hash-ref insn 'labels)))
+     (for-each (curry add-directed-edge! g pred) succs)]
+    [else
      (define pred key)
      (define succ (add1 pred))
-     (and (< succ (hash-count bb)) (add-directed-edge! g pred succ))]))
+     (and (< succ (hash-count bbs)) (add-directed-edge! g pred succ))]))
 
-(define (update-cfg-lin g bb key lin)
+(define (update-cfg-lin lin key g bbs)
   (match lin
-    [(hash 'label _ #:open) 
-     (update-cfg-label g bb key lin)]
-    [(hash 'op _ #:open)
-     (update-cfg-insn g bb key lin)]))
+    [(? label? lin) (void)]
+    [(? insn? lin)  (update-cfg-insn lin key g bbs)]))
 
+(define (make-cfg bbs)
+  (define g (unweighted-graph/directed '()))
+  (for-each (curry add-vertex! g) (hash-keys bbs))
+  ;; Add edges based on last in each block
+  (for ([(key lins) (in-hash bbs)])
+    (update-cfg-lin (last lins) key g bbs))
+  g)
+
+;; Parse input program from stdin
+(define program (read-json (current-input-port)))
+(define functions (hash-ref program 'functions))
+
+;; Main function
 (for ([f functions])
   (printf "-------------------------------\n")
   (printf "FUNCTION: ~a\n" (hash-ref f 'name))
   (printf "-------------------------------\n")
-  (define bb (cdr (foldl expose-bb-lin (cons 0 (hash)) (hash-ref f 'instrs))))
+  (define bbs (cdr (foldl expose-bb-lin (cons 0 (hash)) (hash-ref f 'instrs))))
   (printf "------------\n")
   (printf "BASIC BLOCKS\n")
   (printf "------------\n")
-  (print-bb bb)
-  (define g (unweighted-graph/directed '()))
-  (map (curry add-vertex! g) (hash-keys bb))
-  (for ([(key lins) (in-hash bb)])
-    (update-cfg-lin g bb key (last lins)))
+  (print-bb bbs)
   (printf "------------------\n")
   (printf "CONTROL-FLOW GRAPH\n")
   (printf "------------------\n")
+  (define g (make-cfg bbs))
   (graphviz g #:output (current-output-port))
-  (call-with-output-file "graph.dot" 
-                         (λ (out) (graphviz g #:output out)) #:exists 'replace))
+  (call-with-output-file "graph.dot" (lambda (out) (graphviz g #:output out)) #:exists 'replace))
 
