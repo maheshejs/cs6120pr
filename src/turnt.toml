@@ -1,0 +1,3 @@
+command = 'for f in ../benchmarks/core/*.bril; do bril2json < "$f" | racket {filename}; done'
+output.out = "-"
+output.prof = "2"
