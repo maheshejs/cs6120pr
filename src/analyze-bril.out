@@ -1,0 +1,1020 @@
+Function: ack
+add:1
+br:2
+call:3
+const:2
+eq:2
+ret:3
+sub:3
+Function: main
+call:1
+print:1
+Function: main
+add:1
+const:2
+print:1
+Function: main
+add:1
+br:1
+call:3
+const:3
+div:1
+eq:1
+gt:1
+id:1
+jmp:1
+print:1
+Function: getDigits
+add:1
+br:1
+call:1
+const:3
+div:1
+eq:1
+ret:2
+Function: mod
+div:1
+mul:1
+ret:1
+sub:1
+Function: power
+br:1
+const:4
+eq:1
+jmp:1
+mul:1
+ret:1
+sub:1
+Function: mod
+div:1
+mul:1
+ret:1
+sub:1
+Function: lsb
+call:1
+const:1
+ret:1
+Function: square
+mul:1
+ret:1
+Function: main
+add:1
+br:1
+call:3
+const:2
+id:1
+jmp:1
+lt:1
+mul:1
+print:1
+Function: main
+call:1
+Function: printBinary
+br:1
+call:2
+const:2
+div:1
+eq:1
+print:1
+Function: mod
+div:1
+mul:1
+ret:1
+sub:1
+Function: main
+call:1
+const:1
+print:1
+Function: is_even
+const:1
+div:1
+eq:1
+mul:1
+ret:1
+Function: bin_pow
+br:2
+call:3
+const:3
+div:1
+eq:1
+mul:2
+ret:3
+sub:1
+Function: pow
+br:2
+call:2
+const:4
+div:1
+eq:2
+id:15
+jmp:1
+mul:2
+ret:2
+Function: mod
+div:1
+id:4
+mul:1
+ret:1
+sub:1
+Function: LEFTSHIFT
+call:1
+const:1
+id:4
+mul:1
+ret:1
+Function: RIGHTSHIFT
+call:1
+const:1
+div:1
+id:4
+ret:1
+Function: main
+call:2
+id:4
+print:2
+Function: mod2
+const:2
+div:1
+eq:1
+mul:1
+ret:1
+sub:1
+Function: loop_subroutine
+add:2
+and:1
+br:3
+call:2
+const:6
+div:2
+jmp:1
+le:1
+mul:1
+or:1
+ret:1
+Function: OR
+call:1
+const:1
+ret:1
+Function: AND
+call:1
+const:1
+ret:1
+Function: XOR
+call:2
+ret:1
+sub:1
+Function: main
+br:2
+call:3
+const:2
+eq:1
+gt:1
+id:1
+jmp:2
+lt:1
+print:1
+sub:1
+Function: main
+call:1
+print:1
+Function: catalan
+add:2
+br:2
+call:2
+const:2
+eq:1
+id:2
+jmp:1
+le:1
+mul:1
+ret:2
+sub:2
+Function: main
+add:1
+br:2
+call:1
+const:6
+id:8
+jmp:2
+lt:1
+print:2
+Function: checkPrime
+add:1
+br:3
+const:6
+div:1
+eq:1
+id:14
+jmp:1
+le:1
+lt:1
+mul:1
+ret:3
+Function: main
+add:1
+br:2
+const:3
+div:2
+eq:2
+jmp:3
+mul:2
+print:1
+ret:1
+Function: main
+call:1
+print:1
+Function: combo
+br:3
+call:3
+const:2
+div:1
+eq:1
+lt:3
+mul:1
+or:1
+ret:3
+sub:1
+Function: factorial
+br:1
+call:1
+const:1
+eq:1
+mul:1
+ret:2
+sub:1
+Function: main
+add:7
+br:19
+call:10
+const:59
+div:2
+eq:18
+gt:1
+id:75
+jmp:19
+mul:1
+print:1
+sub:4
+Function: modulo
+div:1
+id:6
+mul:1
+ret:1
+sub:1
+Function: main
+call:1
+const:1
+id:3
+print:1
+Function: count_path
+add:2
+br:2
+call:3
+const:8
+eq:2
+id:8
+ret:3
+sub:4
+Function: main
+add:2
+br:2
+call:3
+const:3
+div:2
+eq:1
+jmp:1
+print:2
+Function: is_single_digit
+const:2
+div:1
+eq:1
+mul:1
+ret:1
+Function: peel_last_digit
+const:1
+div:1
+mul:1
+ret:1
+sub:1
+Function: main
+call:1
+const:3
+id:6
+print:1
+Function: mod
+div:1
+id:6
+mul:1
+ret:1
+sub:1
+Function: gcd
+br:1
+call:1
+const:1
+eq:2
+id:18
+jmp:1
+not:2
+ret:1
+Function: main
+call:1
+const:1
+print:1
+Function: fact
+br:1
+call:1
+const:3
+eq:1
+id:3
+mul:1
+ret:2
+sub:1
+Function: main
+add:1
+br:2
+const:3
+div:2
+eq:1
+jmp:2
+lt:1
+mul:1
+print:1
+sub:1
+Function: main
+call:1
+id:1
+print:1
+Function: fib
+add:1
+br:2
+call:2
+const:6
+eq:2
+id:8
+ret:3
+sub:2
+Function: main
+call:1
+print:1
+Function: fitsInside
+and:2
+le:4
+or:1
+ret:1
+Function: main
+add:1
+br:4
+const:16
+div:2
+eq:2
+id:18
+jmp:4
+lt:1
+mul:2
+print:4
+sub:3
+Function: main
+br:3
+const:1
+eq:1
+id:4
+jmp:4
+lt:1
+print:1
+sub:2
+Function: main
+add:5
+br:4
+call:5
+const:6
+jmp:2
+lt:3
+mul:1
+print:1
+Function: mat_bitsel
+br:1
+call:2
+const:2
+ret:2
+Function: mat_packed_index
+add:1
+mul:1
+ret:1
+Function: pow2
+add:1
+br:1
+const:4
+jmp:1
+lt:1
+mul:1
+ret:1
+Function: bitsel
+br:1
+call:1
+const:3
+div:1
+eq:1
+jmp:1
+ret:1
+sub:1
+Function: abs
+br:1
+const:1
+lt:1
+ret:1
+sub:1
+Function: is_even
+add:1
+call:1
+const:2
+div:2
+eq:1
+ret:1
+Function: is_odd
+call:1
+not:1
+ret:1
+Function: main
+add:1
+br:1
+const:3
+div:1
+jmp:1
+lt:1
+mul:2
+print:1
+sub:2
+Function: lsb
+const:1
+div:1
+mul:1
+ret:1
+sub:1
+Function: hamm_lsb
+add:1
+br:1
+call:2
+const:2
+eq:1
+ret:2
+Function: main
+add:1
+and:1
+br:1
+call:1
+const:3
+div:2
+eq:2
+jmp:1
+print:1
+ret:1
+Function: hanoi
+br:1
+call:2
+const:2
+gt:1
+print:1
+ret:1
+sub:1
+Function: main
+call:1
+const:3
+Function: main
+call:1
+id:1
+print:1
+Function: is_decreasing
+br:2
+call:1
+const:6
+div:1
+gt:1
+id:5
+jmp:3
+lt:1
+mul:1
+ret:2
+Function: last_digit
+const:2
+div:1
+mul:1
+ret:1
+sub:1
+Function: main
+call:1
+print:1
+Function: karatsuba
+add:4
+br:1
+call:10
+const:3
+div:3
+eq:2
+jmp:2
+mul:4
+or:1
+ret:1
+sub:2
+Function: num_digits
+add:1
+br:1
+const:2
+div:1
+id:2
+jmp:1
+lt:1
+mul:1
+ret:1
+Function: max
+br:1
+gt:1
+ret:2
+Function: mod
+div:1
+mul:1
+ret:1
+sub:1
+Function: pow
+add:1
+br:1
+const:3
+id:11
+jmp:1
+lt:1
+mul:1
+ret:1
+sub:1
+Function: main
+add:1
+and:1
+br:2
+call:2
+const:2
+eq:2
+gt:1
+id:2
+jmp:3
+print:1
+Function: getMod
+div:1
+mul:1
+ret:1
+sub:1
+Function: main
+br:1
+const:4
+gt:1
+id:11
+jmp:1
+mul:1
+print:1
+sub:1
+Function: mccarthy91
+add:1
+br:1
+call:2
+const:3
+gt:1
+ret:2
+sub:1
+Function: main
+call:1
+print:1
+Function: main
+br:2
+call:2
+const:5
+div:2
+eq:1
+gt:1
+id:25
+jmp:2
+mul:3
+print:1
+sub:1
+Function: mod
+div:1
+id:4
+mul:1
+ret:1
+sub:1
+Function: main
+call:1
+print:1
+Function: mod_pow
+br:3
+call:4
+const:7
+div:1
+eq:2
+gt:1
+id:26
+jmp:2
+mul:2
+ret:2
+Function: mod
+div:1
+id:4
+mul:1
+ret:1
+sub:1
+Function: main
+add:1
+br:1
+call:2
+div:1
+ge:1
+mul:2
+print:2
+sub:1
+Function: mod
+div:1
+mul:1
+ret:1
+sub:1
+Function: abs
+br:1
+const:2
+lt:1
+mul:1
+ret:1
+Function: mod
+div:1
+mul:1
+ret:1
+sub:1
+Function: gcd
+br:1
+call:1
+const:1
+eq:1
+id:2
+jmp:1
+ret:1
+Function: lcm
+br:2
+call:2
+const:1
+div:1
+eq:2
+mul:1
+ret:2
+Function: orders
+add:1
+br:2
+call:2
+const:1
+div:2
+eq:1
+jmp:2
+print:1
+ret:1
+Function: main
+call:2
+const:2
+print:1
+Function: main
+add:1
+br:2
+call:2
+const:6
+div:1
+eq:1
+jmp:2
+print:1
+sub:1
+Function: pow
+br:2
+const:5
+eq:1
+jmp:2
+mul:1
+ret:1
+sub:1
+Function: palindrome
+br:2
+call:2
+const:6
+div:3
+eq:1
+jmp:3
+le:1
+mul:2
+ret:1
+sub:4
+Function: main
+call:1
+const:2
+id:2
+Function: generateNthRow
+add:2
+br:1
+const:6
+id:18
+jmp:1
+lt:1
+mul:1
+print:2
+sub:1
+Function: main
+add:3
+br:3
+const:3
+div:1
+eq:2
+gt:1
+id:5
+jmp:1
+mul:2
+print:1
+sub:1
+Function: permutation
+br:1
+call:2
+const:1
+div:1
+gt:1
+id:5
+ret:2
+sub:1
+Function: factorial
+br:1
+const:3
+gt:1
+id:9
+jmp:1
+mul:1
+ret:1
+sub:2
+Function: main
+call:1
+const:1
+id:4
+print:1
+Function: main
+add:3
+br:5
+call:1
+const:11
+div:1
+eq:3
+id:1
+jmp:4
+le:2
+lt:1
+print:1
+Function: mod
+div:1
+mul:1
+ret:1
+sub:1
+Function: main
+add:3
+br:3
+const:1
+eq:1
+ge:2
+id:2
+mul:3
+print:1
+Function: main
+call:1
+Function: sqrt
+add:1
+br:2
+const:4
+ge:1
+id:9
+jmp:1
+lt:1
+mul:1
+ret:2
+sub:1
+Function: quadratic
+add:1
+call:2
+const:6
+div:2
+id:17
+mul:4
+print:2
+sub:4
+Function: main
+call:1
+const:1
+id:4
+print:1
+Function: fac
+br:1
+call:1
+const:3
+id:5
+jmp:1
+le:1
+mul:1
+ret:2
+sub:1
+Function: main
+br:1
+call:2
+const:1
+gt:1
+mul:1
+print:1
+sub:1
+Function: area
+mul:1
+print:1
+ret:1
+Function: main
+call:1
+const:2
+id:2
+Function: mod
+div:1
+id:2
+mul:1
+ret:1
+sub:1
+Function: gcd
+br:3
+call:2
+const:2
+eq:2
+gt:1
+id:19
+jmp:3
+ret:3
+Function: relative_primes
+br:2
+call:1
+const:4
+eq:1
+ge:1
+id:10
+jmp:2
+print:1
+sub:1
+Function: main
+add:1
+br:2
+const:4
+div:1
+eq:1
+id:6
+jmp:2
+mul:2
+print:1
+sub:1
+Function: main
+call:1
+print:1
+Function: rot
+add:1
+br:1
+const:2
+ge:1
+ret:1
+sub:1
+Function: main
+add:2
+br:2
+call:2
+const:5
+div:1
+eq:1
+id:21
+jmp:1
+le:1
+mul:1
+print:1
+ret:1
+Function: main
+add:1
+br:1
+call:1
+const:3
+div:1
+eq:1
+jmp:1
+print:1
+ret:1
+Function: mod
+const:1
+div:1
+mul:1
+ret:1
+sub:1
+Function: main
+call:2
+eq:1
+print:3
+Function: sum_by_loop
+add:2
+br:1
+const:3
+jmp:1
+le:1
+ret:1
+Function: sum_by_formula
+add:1
+const:2
+div:1
+mul:1
+ret:1
+Function: main
+add:1
+br:1
+const:5
+div:1
+gt:1
+id:13
+jmp:1
+mul:1
+print:1
+sub:1
+Function: main
+add:3
+br:4
+call:1
+const:5
+div:1
+eq:2
+gt:1
+jmp:1
+lt:1
+mul:2
+print:3
+Function: mod
+div:1
+mul:1
+ret:1
+sub:1
+Function: main
+add:1
+const:2
+div:1
+id:1
+mul:2
+print:1
+Function: sumOfSquares
+add:2
+br:1
+const:3
+id:13
+jmp:1
+le:1
+mul:1
+ret:1
+Function: squareOfSum
+add:2
+br:1
+const:3
+id:13
+jmp:1
+le:1
+mul:1
+ret:1
+Function: main
+call:2
+const:1
+id:9
+print:1
+sub:1
+Function: main
+call:1
+print:2
+Function: totient
+add:1
+br:4
+call:2
+const:3
+div:3
+eq:2
+gt:1
+id:2
+jmp:2
+le:1
+mul:1
+ret:1
+sub:2
+Function: mod
+div:1
+mul:1
+ret:1
+sub:1
+Function: main
+call:1
+print:1
+Function: up_arrow
+add:1
+br:2
+call:1
+const:2
+id:1
+jmp:2
+le:1
+lt:1
+mul:1
+ret:1
+sub:1
