@@ -1,0 +1,7 @@
+@main {
+  copy1: int = id x;
+  copy2: int = id copy1;
+  copy2: int = add copy1 copy2;
+  copy3: int = id copy2;
+  print copy3;
+}

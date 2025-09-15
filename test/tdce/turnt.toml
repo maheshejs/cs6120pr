@@ -1,0 +1,3 @@
+command = 'bril2json < {filename} | racket ../../src/compiler.rkt | bril2txt'
+output.out = "-"
+output.prof = "2"

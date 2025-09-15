@@ -1,0 +1,13 @@
+@main {
+  a: int = const 4;
+  b: int = const 2;
+  lvn.1: int = add a b;
+  sum2: int = id lvn.1;
+  prod1: int = mul lvn.1 lvn.1;
+  lvn.2: int = const 0;
+  sum2: int = const 0;
+  sum1: int = add lvn.2 lvn.2;
+  sum3: int = id lvn.1;
+  prod2: int = id prod1;
+  print prod1;
+}

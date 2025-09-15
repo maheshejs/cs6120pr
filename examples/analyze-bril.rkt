@@ -1,13 +1,8 @@
 #lang racket
-(require json)
-(require racket/pretty)
-
-;; Helpers
-(define (label? lin)
-  (hash-has-key? lin 'label))  
-
-(define (insn? lin)
-  (hash-has-key? lin 'op))  
+(require 
+  json 
+  racket/pretty 
+  "lang-util.rkt")
 
 ;; Histogram construction
 (define (process-op op acc)
