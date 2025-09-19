@@ -1,0 +1,28 @@
+@main(input: int) {
+  n: int = id input;
+  v0: int = const 0;
+  v1: int = const 10;
+  result: int = const 0;
+  v2: bool = const true;
+  notdone: bool = const true;
+.for.cond.3:
+  v4: bool = id notdone;
+  br notdone .for.body.3 .for.end.3;
+.for.body.3:
+  v5: int = id n;
+  a: int = div n v1;
+  floor: int = mul a v1;
+  remainder: int = sub n floor;
+  lvn.1: int = mul result v1;
+  result: int = add lvn.1 remainder;
+  n: int = id a;
+  comp1: bool = eq a v0;
+  br comp1 .if.body .for.incre;
+.if.body:
+  notdone: bool = const false;
+  jmp .for.cond.3;
+.for.incre:
+  jmp .for.cond.3;
+.for.end.3:
+  print result;
+}

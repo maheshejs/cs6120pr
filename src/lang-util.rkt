@@ -1,4 +1,6 @@
 #lang racket
+(require
+  graph)
 
 (provide
  terminator?
@@ -13,6 +15,9 @@
  dest?
  label?
  insn?
+ forward?
+ get-predecessors
+ get-successors
  label->string
  insn->string
  fresh
@@ -63,6 +68,9 @@
 (define (insn->string insn)
   (hash-ref insn 'op))  
 
+(define (forward? dir)
+  (string=? dir "forward"))
+
 (define fresh
   (let ([counter (let ([x 0]) 
                    (lambda () 
@@ -89,3 +97,13 @@
     (printf "~a:\t" key)
     (for-each print-lin lins)
     (printf "\n")))
+
+(define (get-predecessors g v)
+  (if (has-vertex? g v)
+      (filter (λ (w) (has-edge? g w v))
+              (get-vertices g))
+      '()))
+
+(define (get-successors g v)
+  (get-neighbors g v))
+

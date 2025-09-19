@@ -1,5 +1,7 @@
 #lang racket
-(require 
+(require
+  graph
+  "dataflow-analysis.rkt"
   "lang-util.rkt")
 
 (provide
@@ -11,21 +13,28 @@
      (hash-update program 'functions (curry map undead-func))]))
 
 (define (undead-func func)
-  (hash-update func 'bbs undead-bbs))
+  (define cfg (hash-ref func 'cfg))
+  (define bbs (hash-ref func 'bbs))
+  ;; use dataflow analysis to get set of undeads for dead code elimination
+  (define ust-ins (worklist "backward" 
+                            (set) 
+                            (λ (ss) 
+                              (foldl set-union (set) ss)) 
+                            (λ (k s) 
+                              (define lins (hash-ref bbs k)) 
+                              (car (foldr undead-lin (cons s empty) lins))) 
+                            cfg))
+  (define ust-outs 
+    (for/hash ([k (get-vertices cfg)])
+      (values k (foldl set-union (set) (map (curry hash-ref ust-ins) (get-successors cfg k))))))
 
-(define (undead-bbs bbs)
-  (define max-k (apply max (hash-keys bbs)))
+  (hash-update func 'bbs (curryr undead-bbs ust-outs)))
+
+(define (undead-bbs bbs ust-outs)
   (for/fold ([acc bbs]) 
     ([k (in-hash-keys bbs)]) 
-    (if (= k max-k) 
-      (hash-update acc k (lambda (lins) 
-                           (map cons lins (cdr (foldr undead-lin (cons (set) empty) lins)))))
-      (hash-update acc k (lambda (lins) 
-                           (define ust-out 
-                             (for/set ([lin lins] 
-                                       #:when (dest? lin)) 
-                               (hash-ref lin 'dest))) 
-                           (map cons lins (cdr (foldr undead-lin (cons ust-out empty) lins))))))))
+    (hash-update acc k (λ (lins) 
+                         (map cons lins (cdr (foldr undead-lin (cons (hash-ref ust-outs k) empty) lins)))))))
 
 (define (undead-lin lin acc)
   (define ust-in (car acc))
