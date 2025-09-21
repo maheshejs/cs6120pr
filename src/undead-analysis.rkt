@@ -17,7 +17,8 @@
   (define bbs (hash-ref func 'bbs))
   ;; use dataflow analysis to get set of undeads for dead code elimination
   (define ust-ins (worklist "backward" 
-                            (set) 
+                            (λ (k) 
+                              (set))
                             (λ (ss) 
                               (foldl set-union (set) ss)) 
                             (λ (k s) 

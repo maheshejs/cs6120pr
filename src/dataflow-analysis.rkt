@@ -12,7 +12,7 @@
   (define outs (make-hash))
   (for ([v (get-vertices cfg)]) 
     (enqueue! q v) 
-    (hash-set! outs v l))
+    (hash-set! outs v (l v)))
   (let loop ()
     (when (not (queue-empty? q))
       (define v (dequeue! q))

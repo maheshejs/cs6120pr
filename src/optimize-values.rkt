@@ -14,68 +14,74 @@
 (define (optimize-func func) 
   (define cfg (hash-ref func 'cfg)) 
   (define bbs (hash-ref func 'bbs)) 
-  (define uu (worklist "forward" 
-                       (let ([ss (for/list ([(k lins) (in-hash bbs)]) 
+  (define idst-outs (worklist "forward" 
+                       (λ (k)
+                        (let ([ss (for/list ([(k lins) (in-hash bbs)]) 
                                    (for/set ([value (filter value? lins)] 
                                              #:when (id? (hash-ref value 'op))) 
-                                     (cons (hash-ref value 'dest) (first (hash-ref value 'args)))))])
-                         (if (empty? ss) (set) (apply set-union ss)))
-                       (lambda (ss) 
+                                     (cons (hash-ref value 'type) 
+                                           (cons (hash-ref value 'dest) (first (hash-ref value 'args))))))])
+                         (if (empty? ss) (set) (apply set-union ss))))
+                       (λ (ss) 
                          (if (empty? ss) (set) (apply set-intersect ss))) 
-                       (lambda (k s) 
+                       (λ (k s) 
+                         (define (set-kill s d) 
+                           (for/set ([p s] 
+                                     #:when (not (or (string=? d (cadr p)) 
+                                                     (string=? d (cddr p))))) 
+                             p))
                          (define lins (hash-ref bbs k))
-                         (for/fold ([acc s]) 
+                         (for/fold ([acc s])
                            ([lin lins])
-                           (match lin
-                             [(? constant? constant)
-                              (for/set ([p acc] 
-                                        #:when (not (or (string=? (hash-ref constant 'dest) (car p)) 
-                                                        (string=? (hash-ref constant 'dest) (cdr p))))) 
-                                p)]
-                             [(? value? value)
-                              (match (hash-ref value 'op)
-                                [(? id? op)
-                                 (set-add (for/set ([p acc]
-                                           #:when (not (or (string=? (hash-ref value 'dest) (car p)) 
-                                                           (string=? (hash-ref value 'dest) (cdr p))))) 
-                                            p)
-                                          (cons (hash-ref value 'dest) (first (hash-ref value 'args))))]
-                                [else 
-                                  (for/set ([p acc]
-                                           #:when (not (or (string=? (hash-ref value 'dest) (car p)) 
-                                                           (string=? (hash-ref value 'dest) (cdr p))))) 
-                                            p)])]
-                             [else
-                               acc])
-                           )) 
+                           (match lin 
+                             [(? label? label) 
+                              acc]
+                             [(? insn? insn) 
+                              (define op   (hash-ref insn 'op (void))) 
+                              (define dest (hash-ref insn 'dest (void))) 
+                              (define args (hash-ref insn 'args (void)))
+                              (define type (hash-ref insn 'type (void)))
+                              (match insn 
+                                [(? constant? constant) 
+                                 (set-kill acc dest)] 
+                                [(? value? value) 
+                                 (match op 
+                                   [(? id? op) 
+                                    (set-add (set-kill acc dest) (cons type 
+                                                                       (cons dest (first args))))] 
+                                   [else 
+                                     (set-kill acc dest)])] 
+                                [(? effect? effect) 
+                                 acc])]))) 
                        cfg)) 
-  (define vv
+
+  (define idst-ins
     (for/hash ([k (get-vertices cfg)]) 
-      (let ([ss (map (curry hash-ref uu) (get-predecessors cfg k))])
+      (let ([ss (map (curry hash-ref idst-outs) (get-predecessors cfg k))])
         (values k (if (empty? ss) (set) (apply set-intersect ss))))))
 
-  (hash-update func 'bbs (curryr optimize-bbs vv)))
+  (hash-update func 'bbs (curryr optimize-bbs idst-ins)))
 
-(define (optimize-bbs bbs vv)
+(define (optimize-bbs bbs idst-ins)
   (for/fold ([acc bbs]) 
     ([k (in-hash-keys bbs)])
-    (define v (hash-ref vv k))
-    (hash-update acc k (curryr optimize-lins v))))
+    (define idst-in (hash-ref idst-ins k))
+    (hash-update acc k (curryr optimize-lins idst-in))))
 
-(define (optimize-lins lins v)
+(define (optimize-lins lins idst-in)
   (define env (make-hash))
-
-  (define my-table
-    (for/hash ([p (in-set v)]) 
-      (define dest (car p)) 
-      (define arg (cdr p)) 
+  (define init-table
+    (for/hash ([p (in-set idst-in)]) 
+      (define type (car p)) 
+      (define dest (cadr p)) 
+      (define arg  (cddr p)) 
       (define new-dest (optimize-dest dest lins))
       (hash-set! env dest (cons arg (void)))
-      (values (hasheq 'op "id" 'type "int" 'args (list arg)) arg)))
+      (values (hasheq 'op "id" 'type type 'args (list arg)) arg)))
 
   (let loop ([lin   (first lins)]
              [tail  (rest lins)]
-             [table my-table]
+             [table init-table]
              [acc   empty]) 
     (if (empty? tail)
         (let*-values ([(opt-lin new-table) (optimize-lin lin tail table env)])
