@@ -75,6 +75,10 @@
   (define (make-graph edges)
     (unweighted-graph/directed edges))
 
+  (define (visualize-graph g filename)
+    (call-with-output-file (format "~a.dot" filename)
+                           (λ(out) (graphviz g #:output out)) #:exists 'replace))
+
   ;; check that dominators are necessary
   ;; For each vertex v and each dominator d of v,
   ;; remove d from the graph and verify that v
