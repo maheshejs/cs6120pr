@@ -99,10 +99,7 @@
     (printf "\n")))
 
 (define (get-predecessors g v)
-  (if (has-vertex? g v)
-      (filter (λ (w) (has-edge? g w v))
-              (get-vertices g))
-      '()))
+  (get-neighbors (transpose g) v))
 
 (define (get-successors g v)
   (get-neighbors g v))
