@@ -1,3 +1,4 @@
+timeout = 120
 extract = 'total_dyn_inst: (\d+)'
 benchmarks = 'benchmarks/core/*.bril'
 
