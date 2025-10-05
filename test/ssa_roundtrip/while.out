@@ -1,0 +1,17 @@
+@main(a: int) {
+.ssa.entry:
+  a.4: int = id a;
+  jmp .ssa.first;
+.ssa.first:
+.while.cond:
+  zero.8: int = const 0;
+  is_term.9: bool = eq a.4 zero.8;
+  br is_term.9 .while.finish .while.body;
+.while.body:
+  one.10: int = const 1;
+  a.11: int = sub a.4 one.10;
+  a.4: int = id a.11;
+  jmp .while.cond;
+.while.finish:
+  print a.4;
+}

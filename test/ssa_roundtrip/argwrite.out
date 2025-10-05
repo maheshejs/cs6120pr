@@ -1,0 +1,12 @@
+@main(a: int) {
+.ssa.entry:
+  jmp .ssa.first;
+.ssa.first:
+  cond.2: bool = const true;
+  a.4: int = id a;
+  br cond.2 .here .there;
+.here:
+  a.4: int = const 5;
+.there:
+  print a.4;
+}
