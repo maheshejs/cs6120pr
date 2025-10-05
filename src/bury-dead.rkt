@@ -7,11 +7,12 @@
  bury-dead)
 
 (define (bury-dead program)
-  (do ([prog-cur program] 
-       [prog-next (bury-prog (undead-analysis program))]) 
-    ((equal? prog-cur prog-next) prog-cur) 
-    (set! prog-cur prog-next) 
-    (set! prog-next (bury-prog (undead-analysis prog-next)))))
+  (define (fix f p)
+    (let ([p* (f p)])
+      (if (equal? p p*)
+          p
+          (fix f p*))))
+  (fix (λ (p) (bury-prog (undead-analysis p))) program))
 
 (define (bury-prog prog)
   (match prog
@@ -36,8 +37,19 @@
   (define insn (car insn-ust))
   (define ust  (cdr insn-ust))
   (match insn
-    [(? dest? insn) 
-     (define dest (hash-ref insn 'dest))
+    [(? constant? constant) 
+     (define dest (hash-ref constant 'dest))
      (set-member? ust dest)]
-    [else  
-     #t]))
+    [(? undef? undef) 
+     (define dest (hash-ref undef 'dest))
+     (set-member? ust dest)]
+    [(? value? value) 
+     (define dest (hash-ref value 'dest))
+     (set-member? ust dest)]
+    [(? effect? effect) 
+     (define op (hash-ref effect 'op))
+     (match op
+       [(? nop? nop)
+         #f]
+       [else
+         #t])]))

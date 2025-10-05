@@ -10,9 +10,6 @@
  get-dominator-tree
  get-dominator-frontier)
 
-(define (entry? v)
-  (eq? v 'entry))
-
 (define (get-dominators g) 
   (worklist "forward"
             (λ (v)

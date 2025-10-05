@@ -9,13 +9,19 @@
  alloc?
  id?
  const?
+ ssa-set?
+ ssa-get?
+ nop?
  effect?
  constant?
+ phi?
+ undef?
  value?
  dest?
  label?
  insn?
  forward?
+ entry?
  get-predecessors
  get-successors
  label->string
@@ -44,6 +50,21 @@
 (define (const? op)
   (member (string->symbol op) '(const)))
 
+(define (ph? op)
+  (member (string->symbol op) '(phi)))
+
+(define (und? op)
+  (member (string->symbol op) '(undef)))
+
+(define (ssa-set? op)
+  (member (string->symbol op) '(set)))
+
+(define (ssa-get? op)
+  (member (string->symbol op) '(get)))
+
+(define (nop? op)
+  (member (string->symbol op) '(nop)))
+
 (define (dest? insn)
   (hash-has-key? insn 'dest))  
 
@@ -59,8 +80,14 @@
 (define (constant? lin)
   (and (insn? lin) (dest? lin) (const? (hash-ref lin 'op))))  
 
+(define (undef? lin)
+  (and (insn? lin) (dest? lin) (und? (hash-ref lin 'op))))  
+
+(define (phi? lin)
+  (and (insn? lin) (dest? lin) (ph? (hash-ref lin 'op))))  
+
 (define (value? lin)
-  (and (insn? lin) (dest? lin) (not (const? (hash-ref lin 'op)))))
+  (and (insn? lin) (dest? lin) (not (or (constant? lin) (undef? lin) (phi? lin)))))
 
 (define (label->string label)
   (hash-ref label 'label))  
@@ -103,4 +130,8 @@
 
 (define (get-successors g v)
   (get-neighbors g v))
+
+(define (entry? v)
+  (eq? v 'entry))
+
 
