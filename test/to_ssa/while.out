@@ -1,0 +1,30 @@
+@main(a: int) {
+.ssa.entry:
+  zero.1: int = undef;
+  one.2: int = undef;
+  is_term.3: bool = undef;
+  set a.4 a;
+  set is_term.5 is_term.3;
+  set one.6 one.2;
+  set zero.7 zero.1;
+  jmp .ssa.first;
+.ssa.first:
+.while.cond:
+  a.4: int = get;
+  is_term.5: bool = get;
+  one.6: int = get;
+  zero.7: int = get;
+  zero.8: int = const 0;
+  is_term.9: bool = eq a.4 zero.8;
+  br is_term.9 .while.finish .while.body;
+.while.body:
+  one.10: int = const 1;
+  a.11: int = sub a.4 one.10;
+  set a.4 a.11;
+  set is_term.5 is_term.9;
+  set one.6 one.10;
+  set zero.7 zero.8;
+  jmp .while.cond;
+.while.finish:
+  print a.4;
+}

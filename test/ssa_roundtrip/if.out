@@ -1,0 +1,18 @@
+@main(cond: bool) {
+.ssa.entry:
+  jmp .ssa.first;
+.ssa.first:
+.entry:
+  a.2: int = const 47;
+  br cond .left .right;
+.left:
+  a.3: int = add a.2 a.2;
+  a.5: int = id a.3;
+  jmp .exit;
+.right:
+  a.4: int = mul a.2 a.2;
+  a.5: int = id a.4;
+  jmp .exit;
+.exit:
+  print a.5;
+}

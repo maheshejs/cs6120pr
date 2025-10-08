@@ -1,0 +1,18 @@
+@main {
+.ssa.entry:
+  jmp .ssa.first;
+.ssa.first:
+.entry:
+  i.5: int = const 1;
+  jmp .loop;
+.loop:
+  max.8: int = const 10;
+  cond.9: bool = lt i.5 max.8;
+  br cond.9 .body .exit;
+.body:
+  i.10: int = add i.5 i.5;
+  i.5: int = id i.10;
+  jmp .loop;
+.exit:
+  print i.5;
+}

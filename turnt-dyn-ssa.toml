@@ -5,13 +5,14 @@ benchmarks = 'benchmarks/core/*.bril'
 [runs.baseline]
 pipeline = [
     "bril2json",
+    "racket src/compiler.rkt",
     "brili -p {args}",
 ]
 
 [runs.myopt]
 pipeline = [
     "bril2json",
-    "racket src/compiler.rkt",
+    "racket src/compiler.rkt --ssa",
     "brili -p {args}",
 ]
 

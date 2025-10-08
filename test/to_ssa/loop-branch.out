@@ -1,0 +1,41 @@
+@func: int {
+.ssa.entry:
+  n.1: int = undef;
+  jmp .ssa.first;
+.ssa.first:
+  n.2: int = const 5;
+  ret n.2;
+}
+@loop(infinite: bool, print: bool) {
+.ssa.entry:
+  v.3: int = undef;
+  set v.4 v.3;
+  jmp .ssa.first;
+.ssa.first:
+.entry:
+.loop.header:
+  v.4: int = get;
+  br infinite .loop.body .loop.end;
+.loop.body:
+  set v.6 v.4;
+  br print .loop.print .loop.next;
+.loop.print:
+  v.5: int = call @func;
+  print v.5;
+  set v.6 v.5;
+.loop.next:
+  v.6: int = get;
+  set v.4 v.6;
+  jmp .loop.header;
+.loop.end:
+}
+@main {
+.ssa.entry:
+  print.7: bool = undef;
+  infinite.8: bool = undef;
+  jmp .ssa.first;
+.ssa.first:
+  infinite.9: bool = const false;
+  print.10: bool = const true;
+  call @loop infinite.9 print.10;
+}

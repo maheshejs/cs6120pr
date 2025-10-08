@@ -1,0 +1,16 @@
+@main {
+.ssa.entry:
+  a.1: int = undef;
+  jmp .ssa.first;
+.ssa.first:
+  cond.4: bool = const true;
+  br cond.4 .true .false;
+.true:
+  a.8: int = const 0;
+  jmp .zexit;
+.false:
+  a.8: int = id a.1;
+  jmp .zexit;
+.zexit:
+  print a.8;
+}

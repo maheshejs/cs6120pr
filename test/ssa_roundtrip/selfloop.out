@@ -1,0 +1,18 @@
+@main {
+.ssa.entry:
+  jmp .ssa.first;
+.ssa.first:
+.entry:
+  one.5: int = const 1;
+  zero.6: int = const 0;
+  x.8: int = const 5;
+.loop:
+  x.10: int = sub x.8 one.5;
+  done.11: bool = eq x.10 zero.6;
+.br:
+  x.8: int = id x.10;
+  br done.11 .exit .loop;
+.exit:
+  print x.10;
+  ret;
+}

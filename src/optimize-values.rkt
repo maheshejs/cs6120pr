@@ -44,6 +44,8 @@
                               (match insn 
                                 [(? constant? constant) 
                                  (set-kill acc dest)] 
+                                [(? undef? undef) 
+                                 (set-kill acc dest)] 
                                 [(? value? value) 
                                  (match op 
                                    [(? id? op) 
@@ -108,6 +110,11 @@
            #:when (string=? (hash-ref insn 'dest) (car v))) 
        (hash-remove! env k))
      (optimize-constant insn tail table env)]
+    [(? undef? insn) 
+     (for ([(k v) (in-hash env)] 
+           #:when (string=? (hash-ref insn 'dest) (car v))) 
+       (hash-remove! env k))
+     (optimize-undef insn tail table env)]
     [(? value?    insn) 
      (for ([(k v) (in-hash env)] 
            #:when (string=? (hash-ref insn 'dest) (car v))) 
@@ -130,6 +137,17 @@
         (let* ([new-dest (optimize-dest dest tail)])
           (hash-set! env dest (cons new-dest val))
           (values (hash-update constant 'dest (const new-dest)) (hash-set table key new-dest))))))
+
+(define (optimize-undef undef tail table env) 
+  (let* ([dest (hash-ref undef 'dest)]
+         [key (hash-remove undef 'dest)])
+    (if (hash-has-key? table key)
+        (let* ([var (hash-ref table key)])
+          (hash-set! env dest (cons var (void)))
+          (values undef table))
+        (let* ([new-dest (optimize-dest dest tail)])
+          (hash-set! env dest (cons new-dest (void)))
+          (values (hash-update undef 'dest (const new-dest)) (hash-set table key new-dest))))))
 
 (define (optimize-value value tail table env) 
   (define op (hash-ref value 'op))

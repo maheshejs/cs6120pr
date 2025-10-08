@@ -1,0 +1,27 @@
+@main {
+.ssa.entry:
+  zero.1: int = undef;
+  one.2: int = undef;
+  done.3: bool = undef;
+  x.4: int = undef;
+  jmp .ssa.first;
+.ssa.first:
+.entry:
+  one.5: int = const 1;
+  zero.6: int = const 0;
+  x.7: int = const 5;
+  set x.8 x.7;
+  set done.9 done.3;
+.loop:
+  x.8: int = get;
+  done.9: bool = get;
+  x.10: int = sub x.8 one.5;
+  done.11: bool = eq x.10 zero.6;
+.br:
+  set x.8 x.10;
+  set done.9 done.11;
+  br done.11 .exit .loop;
+.exit:
+  print x.10;
+  ret;
+}

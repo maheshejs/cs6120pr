@@ -1,0 +1,29 @@
+@main {
+.ssa.entry:
+  max.1: int = undef;
+  cond.2: bool = undef;
+  i.3: int = undef;
+  jmp .ssa.first;
+.ssa.first:
+.entry:
+  i.4: int = const 1;
+  set i.5 i.4;
+  set cond.6 cond.2;
+  set max.7 max.1;
+  jmp .loop;
+.loop:
+  i.5: int = get;
+  cond.6: bool = get;
+  max.7: int = get;
+  max.8: int = const 10;
+  cond.9: bool = lt i.5 max.8;
+  br cond.9 .body .exit;
+.body:
+  i.10: int = add i.5 i.5;
+  set i.5 i.10;
+  set cond.6 cond.9;
+  set max.7 max.8;
+  jmp .loop;
+.exit:
+  print i.5;
+}
