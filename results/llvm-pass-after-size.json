@@ -1,0 +1,29 @@
+{  "size results" :
+  { "detailed size results" :
+    { "aha-mont64" : 1803,
+      "crc32" : 787,
+      "cubic" : 2843,
+      "edn" : 3755,
+      "huffbench" : 4074,
+      "matmult-int" : 1275,
+      "md5sum" : 2106,
+      "minver" : 3211,
+      "nbody" : 1707,
+      "nettle-aes" : 6811,
+      "nettle-sha256" : 9099,
+      "nsichneu" : 35883,
+      "picojpeg" : 17771,
+      "primecount" : 1035,
+      "qrduino" : 13386,
+      "sglib-combined" : 9168,
+      "slre" : 6363,
+      "st" : 1627,
+      "statemate" : 7659,
+      "tarfind" : 1450,
+      "ud" : 2283,
+      "wikisort" : 14963
+    },
+    "size geometric mean" : 4003,
+    "size geometric standard deviation" : 2.74
+  }
+}

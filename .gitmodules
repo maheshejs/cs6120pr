@@ -1,0 +1,3 @@
+[submodule "embench"]
+	path = embench
+	url = https://github.com/embench/embench-iot

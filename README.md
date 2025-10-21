@@ -14,13 +14,22 @@
 │   ├── undead-analysis.rkt             # DCE 
 │   ├── dataflow-analysis.rkt           # DF
 │   ├── dominator.rkt                   # DOM 
+│   ├── fake-entry                      # SSA-PREP
+│   ├── decorate-defines                # SSA-PREP
+│   ├── insert-undefs                   # SSA-PREP
+│   ├── place-phis                      # SSA-IN
+│   ├── rename-variables                # SSA-IN
+│   ├── hoist-phis                      # SSA-IN (Pizlo's form)
+│   ├── remove-phis                     # SSA-OUT
 │   └── flatten-program.rkt             # JSON
 ├── test/                  
 ├── examples/                           # example programs
 │   ├── basic-blocks.rkt                # form basic blocks and construct CFG 
-│   └── analyze-bril.rkt                # analyze Bril program and output instruction count histogram
-├── benchmarks/                         # benchmarks
+│   ├── analyze-bril.rkt                # analyze Bril program and output instruction count histogram
+│   └── llvm/Skeleton.cpp               # LLVM pass to transform `A and B` to `A xor B` xor `A or B` 
+├── benchmarks/                         # Bril benchmarks
 │   └── core/
+├── embench/                            # C benchmarks
 ├── graphics/                           # example visualizations
 ├── results/                            # benchmark results
 ├── stats.py                            # stats script
