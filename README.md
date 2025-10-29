@@ -15,10 +15,13 @@
 │   ├── dataflow-analysis.rkt           # DF
 │   ├── dominator.rkt                   # DOM 
 │   ├── fake-entry                      # SSA-PREP
+│   ├── decorate-loops                  # SSA-PREP (natural loops)
 │   ├── decorate-defines                # SSA-PREP
 │   ├── insert-undefs                   # SSA-PREP
 │   ├── place-phis                      # SSA-IN
 │   ├── rename-variables                # SSA-IN
+│   ├── taint-all-invariants            # SSA-IN (loop-invariant analysis)
+│   ├── hoist-invariants                # SSA-IN (loop-invariant code motion)
 │   ├── hoist-phis                      # SSA-IN (Pizlo's form)
 │   ├── remove-phis                     # SSA-OUT
 │   └── flatten-program.rkt             # JSON

@@ -8,7 +8,8 @@
 (provide
  get-dominators
  get-dominator-tree
- get-dominator-frontier)
+ get-dominator-frontier
+ get-natural-loops)
 
 (define (get-dominators g) 
   (worklist "forward"
@@ -60,6 +61,32 @@
                   (remove k (get-successors d-graph k)) 
                   (flatten (map (curry get-successors g) 
                                 (get-successors d-graph k))))))))
+
+(define (get-natural-loops g)
+  (define ds (get-dominators g))
+  (let loop ([g* (graph-copy g)] [acc (hash)]) 
+    (define back-edges (filter (λ (e)
+                                 (let ([b (first e)]
+                                       [h (second e)])
+                                   (set-member? (hash-ref ds b) h))) 
+                               (get-edges g*)))
+    (define sccs (scc g*))
+    (for/fold ([acc acc])
+      ([scc* sccs])
+      (define hs (set-intersect (apply set-intersect (map (curry hash-ref ds) scc*)) (list->set scc*)))
+      (if (= (set-count hs) 1)
+        (let ([h (set-first hs)])
+          (define filtered-back-edges (filter (λ (e) (eq? h (second e))) back-edges))
+          (define bs (for/set ([e filtered-back-edges]) (first e)))
+          (define back-edge (findf (λ (e) (subset? bs (hash-ref ds (first e)))) filtered-back-edges))
+          (cond 
+            [back-edge 
+              (remove-directed-edge! g* (first back-edge) (second back-edge))
+              (define exit (remove* scc* (flatten (map (curry get-successors g) scc*))))
+              (loop (graph-copy g*) (hash-set acc (fresh 'loop) (list h scc* exit)))]
+            [else
+              acc]))
+        acc))))
 
 ;; ----------
 ;; Unit tests 
@@ -124,6 +151,12 @@
                '((entry 1) (1 2) (1 3) (2 3) (3 4) (4 3) 
                  (4 5) (4 6) (5 7) (6 7) (7 4) (7 8) 
                  (8 9) (8 10) (9 1) (10 7))))
+
+  ;; Graph 7: looping diamond with backedges and continue
+  (define g7 (make-graph
+               '((entry 1) (1 2) (1 3) (2 3) (3 4) (4 3) 
+                 (4 5) (4 6) (5 7) (6 7) (7 4) (7 8) 
+                 (8 9) (8 10) (9 1) (10 4))))
 
   ;; ---------------------------
   ;; get-dominators
@@ -301,4 +334,10 @@
                      9     (set 1)
                      10    (set 7)))
     (check-equal? (get-dominator-frontier g6) golden))
+
+  ;; ---------------------------
+  ;; get-natural-loops
+  ;; ---------------------------
+  (pretty-print (get-natural-loops g6))
+  (pretty-print (get-natural-loops g7))
   )

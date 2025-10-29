@@ -1,0 +1,25 @@
+@main {
+.entry:
+    i: int = const 1;
+    j: int = const 2;
+    y: int = const 3;
+    z: int = const 4;
+    jmp .loop;
+.loop:
+    max: int = const 10;
+    y: int = const 5;
+    clobber: int = add z z;
+    z: int = const 6;
+    cond: bool = lt i max;
+    br cond .body .exit;
+.body:
+    i: int = add i i;
+    k: int = add j max;
+    print k;
+    jmp .loop;
+.exit:
+    print i;
+    print y;
+    print clobber;
+    print z;
+}

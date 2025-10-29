@@ -36,19 +36,19 @@
            [(? phi? phi) 
             (hash-update acc x (λ (lins) 
                                  (list-update lins i (λ (lin) 
-                                                       (rename-dest phi stacks)))))] 
+                                                       (rename-dest phi stacks x)))))] 
            [(? undef? undef) 
             (hash-update acc x (λ (lins) 
                                  (list-update lins i (λ (lin) 
-                                                       (rename-dest undef stacks)))))] 
+                                                       (rename-dest undef stacks x)))))] 
            [(? constant? constant) 
             (hash-update acc x (λ (lins) 
                                  (list-update lins i (λ (lin) 
-                                                       (rename-dest constant stacks)))))] 
+                                                       (rename-dest constant stacks x)))))] 
            [(? value? value) 
             (hash-update acc x (λ (lins) 
                                  (list-update lins i (λ (lin) 
-                                                       (rename-dest (rename-args value stacks) stacks)))))] 
+                                                       (rename-dest (rename-args value stacks) stacks x)))))] 
            [(? effect? effect) 
             (hash-update acc x (λ (lins) 
                                  (list-update lins i (λ (lin) 
@@ -105,10 +105,10 @@
          [(? effect? effect) 
           (void)])]))))
 
-(define (rename-dest insn stacks)
+(define (rename-dest insn stacks x)
   (if (hash-has-key? insn 'dest)
     (hash-update insn 'dest (λ (dest) 
-                              (let ([new-dest (fresh (string->symbol dest))]) 
+                              (let ([new-dest (fresh (string->symbol (~a "bb" x "." dest)))]) 
                                 (enqueue-front! (hash-ref stacks dest) new-dest) 
                                 new-dest)))
     insn))
