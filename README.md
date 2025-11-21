@@ -7,6 +7,8 @@
 │   ├── compiler.rkt                    # main compiler script
 │   ├── <...>.rkt                       # compiler passes
 │   ├── expose-basic-blocks.rkt         # BB
+│   ├── expose-speculated-calls.rkt     # BB (transform calls to speculated calls)
+│   ├── trace-inline-calls.rkt          # SPECULATION (inline calls speculatively)
 │   ├── decorate-flow-graph.rkt         # CFG
 │   ├── remove-unused-instructions.rkt  # CFG
 │   ├── optimize-values.rkt             # LVN 
