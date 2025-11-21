@@ -1,0 +1,110 @@
+{
+  "functions": [
+    {
+      "name": "combo",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-k",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-k",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-zero",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-one",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "lt",
+          "dest": "cc-rename-nneg",
+          "type": "bool",
+          "args": [
+            "cc-rename-n",
+            "cc-rename-zero"
+          ]
+        },
+        {
+          "op": "lt",
+          "dest": "cc-rename-kneg",
+          "type": "bool",
+          "args": [
+            "cc-rename-k",
+            "cc-rename-zero"
+          ]
+        },
+        {
+          "op": "or",
+          "dest": "cc-rename-eitherneg",
+          "type": "bool",
+          "args": [
+            "cc-rename-nneg",
+            "cc-rename-kneg"
+          ]
+        }
+      ],
+      "type": "int"
+    },
+    {
+      "name": "factorial",
+      "args": [
+        {
+          "name": "cc-rename-x",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-x",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-one",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "eq",
+          "dest": "cc-rename-basee",
+          "type": "bool",
+          "args": [
+            "cc-rename-x",
+            "cc-rename-one"
+          ]
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

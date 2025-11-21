@@ -1,0 +1,149 @@
+{
+  "functions": [
+    {
+      "name": "is_decreasing",
+      "args": [
+        {
+          "name": "cc-rename-x",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-x",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-tmp",
+          "type": "int",
+          "args": [
+            "cc-rename-x"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-tmp1",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-tmp2",
+          "type": "int",
+          "value": -1
+        },
+        {
+          "op": "mul",
+          "dest": "cc-rename-tmp3",
+          "type": "int",
+          "args": [
+            "cc-rename-tmp1",
+            "cc-rename-tmp2"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-prev",
+          "type": "int",
+          "args": [
+            "cc-rename-tmp3"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-tmp7",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "op": "gt",
+          "dest": "cc-rename-tmp8",
+          "type": "bool",
+          "args": [
+            "cc-rename-tmp",
+            "cc-rename-tmp7"
+          ]
+        }
+      ],
+      "type": "bool"
+    },
+    {
+      "name": "last_digit",
+      "args": [
+        {
+          "name": "cc-rename-x",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-x",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-tmp18",
+          "type": "int",
+          "value": 10
+        },
+        {
+          "op": "div",
+          "dest": "cc-rename-tmp19",
+          "type": "int",
+          "args": [
+            "cc-rename-x",
+            "cc-rename-tmp18"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-tmp20",
+          "type": "int",
+          "value": 10
+        },
+        {
+          "op": "mul",
+          "dest": "cc-rename-tmp21",
+          "type": "int",
+          "args": [
+            "cc-rename-tmp19",
+            "cc-rename-tmp20"
+          ]
+        },
+        {
+          "op": "sub",
+          "dest": "cc-rename-tmp22",
+          "type": "int",
+          "args": [
+            "cc-rename-x",
+            "cc-rename-tmp21"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-ret",
+          "type": "int",
+          "args": [
+            "cc-rename-tmp22"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-inl",
+          "type": "bool",
+          "value": true
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

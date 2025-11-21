@@ -1,0 +1,125 @@
+{
+  "functions": [
+    {
+      "name": "pow",
+      "args": [
+        {
+          "name": "cc-rename-base",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-exp",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-base",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-exp",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-res",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-zero",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-one",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-not_finished",
+          "type": "bool",
+          "value": true
+        }
+      ],
+      "type": "int"
+    },
+    {
+      "name": "palindrome",
+      "args": [
+        {
+          "name": "cc-rename-in",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-len",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-in",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-len",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-is_palindrome",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-zero",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-two",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-ten",
+          "type": "int",
+          "value": 10
+        },
+        {
+          "op": "le",
+          "dest": "cc-rename-check",
+          "type": "bool",
+          "args": [
+            "cc-rename-len",
+            "cc-rename-zero"
+          ]
+        }
+      ],
+      "type": "bool"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "functions": [
+    {
+      "name": "getMod",
+      "args": [
+        {
+          "name": "cc-rename-val",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-mod",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-val",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-mod",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "div",
+          "dest": "cc-rename-divisor",
+          "type": "int",
+          "args": [
+            "cc-rename-val",
+            "cc-rename-mod"
+          ]
+        },
+        {
+          "op": "mul",
+          "dest": "cc-rename-multiple",
+          "type": "int",
+          "args": [
+            "cc-rename-divisor",
+            "cc-rename-mod"
+          ]
+        },
+        {
+          "op": "sub",
+          "dest": "cc-rename-rem",
+          "type": "int",
+          "args": [
+            "cc-rename-val",
+            "cc-rename-multiple"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-ret",
+          "type": "int",
+          "args": [
+            "cc-rename-rem"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-inl",
+          "type": "bool",
+          "value": true
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

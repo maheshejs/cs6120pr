@@ -1,0 +1,103 @@
+{
+  "functions": [
+    {
+      "name": "main",
+      "args": [
+        {
+          "name": "cc-rename-x",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-min_guess",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-max_guess",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-x",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-min_guess",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-max_guess",
+          "type": "int",
+          "args": [
+            "cc-param-2"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v0",
+          "type": "int",
+          "args": [
+            "cc-rename-min_guess"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-v1",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "add",
+          "dest": "cc-rename-v2",
+          "type": "int",
+          "args": [
+            "cc-rename-v0",
+            "cc-rename-v1"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-min_plus_1",
+          "type": "int",
+          "args": [
+            "cc-rename-v2"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v4",
+          "type": "int",
+          "args": [
+            "cc-rename-min_plus_1"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v5",
+          "type": "int",
+          "args": [
+            "cc-rename-max_guess"
+          ]
+        },
+        {
+          "op": "eq",
+          "dest": "cc-rename-v6",
+          "type": "bool",
+          "args": [
+            "cc-rename-v4",
+            "cc-rename-v5"
+          ]
+        }
+      ]
+    }
+  ]
+}

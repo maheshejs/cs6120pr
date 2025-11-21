@@ -1,0 +1,176 @@
+{
+  "functions": [
+    {
+      "name": "mod_pow",
+      "args": [
+        {
+          "name": "cc-rename-b",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-e",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-m",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-b",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-e",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-m",
+          "type": "int",
+          "args": [
+            "cc-param-2"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v1",
+          "type": "int",
+          "args": [
+            "cc-rename-m"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-v2",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "eq",
+          "dest": "cc-rename-v3",
+          "type": "bool",
+          "args": [
+            "cc-rename-v1",
+            "cc-rename-v2"
+          ]
+        }
+      ],
+      "type": "int"
+    },
+    {
+      "name": "mod",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-m",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-m",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v0",
+          "type": "int",
+          "args": [
+            "cc-rename-n"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v1",
+          "type": "int",
+          "args": [
+            "cc-rename-n"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v2",
+          "type": "int",
+          "args": [
+            "cc-rename-m"
+          ]
+        },
+        {
+          "op": "div",
+          "dest": "cc-rename-v3",
+          "type": "int",
+          "args": [
+            "cc-rename-v1",
+            "cc-rename-v2"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v4",
+          "type": "int",
+          "args": [
+            "cc-rename-m"
+          ]
+        },
+        {
+          "op": "mul",
+          "dest": "cc-rename-v5",
+          "type": "int",
+          "args": [
+            "cc-rename-v3",
+            "cc-rename-v4"
+          ]
+        },
+        {
+          "op": "sub",
+          "dest": "cc-rename-v6",
+          "type": "int",
+          "args": [
+            "cc-rename-v0",
+            "cc-rename-v5"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-ret",
+          "type": "int",
+          "args": [
+            "cc-rename-v6"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-inl",
+          "type": "bool",
+          "value": true
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

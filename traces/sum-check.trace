@@ -1,0 +1,124 @@
+{
+  "functions": [
+    {
+      "name": "sum_by_loop",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-one",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-sum",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-i",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "le",
+          "dest": "cc-rename-con",
+          "type": "bool",
+          "args": [
+            "cc-rename-i",
+            "cc-rename-n"
+          ]
+        }
+      ],
+      "type": "int"
+    },
+    {
+      "name": "sum_by_formula",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-one",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-two",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "op": "add",
+          "dest": "cc-rename-n_1",
+          "type": "int",
+          "args": [
+            "cc-rename-one",
+            "cc-rename-n"
+          ]
+        },
+        {
+          "op": "mul",
+          "dest": "cc-rename-multi",
+          "type": "int",
+          "args": [
+            "cc-rename-n_1",
+            "cc-rename-n"
+          ]
+        },
+        {
+          "op": "div",
+          "dest": "cc-rename-sum",
+          "type": "int",
+          "args": [
+            "cc-rename-multi",
+            "cc-rename-two"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-ret",
+          "type": "int",
+          "args": [
+            "cc-rename-sum"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-inl",
+          "type": "bool",
+          "value": true
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

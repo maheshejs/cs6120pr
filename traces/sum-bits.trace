@@ -1,0 +1,83 @@
+{
+  "functions": [
+    {
+      "name": "mod",
+      "args": [
+        {
+          "name": "cc-rename-dividend",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-divisor",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-dividend",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-divisor",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "div",
+          "dest": "cc-rename-quotient",
+          "type": "int",
+          "args": [
+            "cc-rename-dividend",
+            "cc-rename-divisor"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-two",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "op": "mul",
+          "dest": "cc-rename-prod",
+          "type": "int",
+          "args": [
+            "cc-rename-two",
+            "cc-rename-quotient"
+          ]
+        },
+        {
+          "op": "sub",
+          "dest": "cc-rename-diff",
+          "type": "int",
+          "args": [
+            "cc-rename-dividend",
+            "cc-rename-prod"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-ret",
+          "type": "int",
+          "args": [
+            "cc-rename-diff"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-inl",
+          "type": "bool",
+          "value": true
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "functions": [
+    {
+      "name": "hanoi",
+      "args": [
+        {
+          "name": "cc-rename-disks",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-src",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-dst",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-spare",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-disks",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-src",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-dst",
+          "type": "int",
+          "args": [
+            "cc-param-2"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-spare",
+          "type": "int",
+          "args": [
+            "cc-param-3"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-zero",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "op": "gt",
+          "dest": "cc-rename-pos",
+          "type": "bool",
+          "args": [
+            "cc-rename-disks",
+            "cc-rename-zero"
+          ]
+        }
+      ]
+    }
+  ]
+}

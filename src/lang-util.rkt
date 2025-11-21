@@ -3,6 +3,8 @@
   graph)
 
 (provide
+ icall?
+ call?
  terminator?
  branch?
  commutative?
@@ -31,6 +33,12 @@
  print-insn
  print-lin
  print-bb)
+
+(define (call? op)
+  (member (string->symbol op) '(call)))
+
+(define (icall? op)
+  (member (string->symbol op) '(icall)))
 
 (define (terminator? op)
   (member (string->symbol op) '(br jmp ret)))

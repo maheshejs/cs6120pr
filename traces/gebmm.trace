@@ -1,0 +1,323 @@
+{
+  "functions": [
+    {
+      "name": "mat_bitsel",
+      "args": [
+        {
+          "name": "cc-rename-m",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-cols",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-i",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-j",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-m",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-cols",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-i",
+          "type": "int",
+          "args": [
+            "cc-param-2"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-j",
+          "type": "int",
+          "args": [
+            "cc-param-3"
+          ]
+        }
+      ],
+      "type": "int"
+    },
+    {
+      "name": "mat_packed_index",
+      "args": [
+        {
+          "name": "cc-rename-i",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-j",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-cols",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-i",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-j",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-cols",
+          "type": "int",
+          "args": [
+            "cc-param-2"
+          ]
+        },
+        {
+          "op": "mul",
+          "dest": "cc-rename-index",
+          "type": "int",
+          "args": [
+            "cc-rename-i",
+            "cc-rename-cols"
+          ]
+        },
+        {
+          "op": "add",
+          "dest": "cc-rename-index",
+          "type": "int",
+          "args": [
+            "cc-rename-index",
+            "cc-rename-j"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-ret",
+          "type": "int",
+          "args": [
+            "cc-rename-index"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-inl",
+          "type": "bool",
+          "value": true
+        }
+      ],
+      "type": "int"
+    },
+    {
+      "name": "bitsel",
+      "args": [
+        {
+          "name": "cc-rename-m",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-i",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-m",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-i",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-zero",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-one",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-two",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "op": "eq",
+          "dest": "cc-rename-i_eq_zero",
+          "type": "bool",
+          "args": [
+            "cc-rename-i",
+            "cc-rename-zero"
+          ]
+        }
+      ],
+      "type": "bool"
+    },
+    {
+      "name": "is_odd",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        }
+      ],
+      "type": "bool"
+    },
+    {
+      "name": "is_even",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        }
+      ],
+      "type": "bool"
+    },
+    {
+      "name": "abs",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-zero",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "op": "lt",
+          "dest": "cc-rename-is_neg",
+          "type": "bool",
+          "args": [
+            "cc-rename-n",
+            "cc-rename-zero"
+          ]
+        }
+      ],
+      "type": "int"
+    },
+    {
+      "name": "pow2",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-one",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-two",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-i",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-result",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "lt",
+          "dest": "cc-rename-i_lt_n",
+          "type": "bool",
+          "args": [
+            "cc-rename-i",
+            "cc-rename-n"
+          ]
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

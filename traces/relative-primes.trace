@@ -1,0 +1,208 @@
+{
+  "functions": [
+    {
+      "name": "relative_primes",
+      "args": [
+        {
+          "name": "cc-rename-a",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-a",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v1",
+          "type": "int",
+          "args": [
+            "cc-rename-a"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-b",
+          "type": "int",
+          "args": [
+            "cc-rename-v1"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v2",
+          "type": "int",
+          "args": [
+            "cc-rename-b"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-v3",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "ge",
+          "dest": "cc-rename-v4",
+          "type": "bool",
+          "args": [
+            "cc-rename-v2",
+            "cc-rename-v3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gcd",
+      "args": [
+        {
+          "name": "cc-rename-a",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-b",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-a",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-b",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v1",
+          "type": "int",
+          "args": [
+            "cc-rename-b"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v2",
+          "type": "int",
+          "args": [
+            "cc-rename-a"
+          ]
+        },
+        {
+          "op": "gt",
+          "dest": "cc-rename-v3",
+          "type": "bool",
+          "args": [
+            "cc-rename-v1",
+            "cc-rename-v2"
+          ]
+        }
+      ],
+      "type": "int"
+    },
+    {
+      "name": "mod",
+      "args": [
+        {
+          "name": "cc-rename-a",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-b",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-a",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-b",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v0",
+          "type": "int",
+          "args": [
+            "cc-rename-a"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v1",
+          "type": "int",
+          "args": [
+            "cc-rename-b"
+          ]
+        },
+        {
+          "op": "div",
+          "dest": "cc-rename-v2",
+          "type": "int",
+          "args": [
+            "cc-rename-v0",
+            "cc-rename-v1"
+          ]
+        },
+        {
+          "op": "mul",
+          "dest": "cc-rename-v3",
+          "type": "int",
+          "args": [
+            "cc-rename-v2",
+            "cc-rename-v1"
+          ]
+        },
+        {
+          "op": "sub",
+          "dest": "cc-rename-v4",
+          "type": "int",
+          "args": [
+            "cc-rename-v0",
+            "cc-rename-v3"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-ret",
+          "type": "int",
+          "args": [
+            "cc-rename-v4"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-inl",
+          "type": "bool",
+          "value": true
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

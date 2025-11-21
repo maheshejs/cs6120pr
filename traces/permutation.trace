@@ -1,0 +1,135 @@
+{
+  "functions": [
+    {
+      "name": "permutation",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-k",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-k",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v1",
+          "type": "int",
+          "args": [
+            "cc-rename-k"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v2",
+          "type": "int",
+          "args": [
+            "cc-rename-n"
+          ]
+        },
+        {
+          "op": "gt",
+          "dest": "cc-rename-v3",
+          "type": "bool",
+          "args": [
+            "cc-rename-v1",
+            "cc-rename-v2"
+          ]
+        }
+      ],
+      "type": "int"
+    },
+    {
+      "name": "factorial",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v1",
+          "type": "int",
+          "args": [
+            "cc-rename-n"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-v2",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "sub",
+          "dest": "cc-rename-v3",
+          "type": "int",
+          "args": [
+            "cc-rename-v1",
+            "cc-rename-v2"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-i",
+          "type": "int",
+          "args": [
+            "cc-rename-v3"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v4",
+          "type": "int",
+          "args": [
+            "cc-rename-i"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-v5",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "op": "gt",
+          "dest": "cc-rename-v6",
+          "type": "bool",
+          "args": [
+            "cc-rename-v4",
+            "cc-rename-v5"
+          ]
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}
