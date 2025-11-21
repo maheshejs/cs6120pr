@@ -1,0 +1,47 @@
+{
+  "functions": [
+    {
+      "name": "fact",
+      "args": [
+        {
+          "name": "cc-rename-a",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-a",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v1",
+          "type": "int",
+          "args": [
+            "cc-rename-a"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-v2",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "dest": "cc-rename-v3",
+          "type": "bool",
+          "args": [
+            "cc-rename-v1",
+            "cc-rename-v2"
+          ]
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

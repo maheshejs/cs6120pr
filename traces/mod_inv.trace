@@ -1,0 +1,109 @@
+{
+  "functions": [
+    {
+      "name": "mod",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-p",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-p",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v0",
+          "type": "int",
+          "args": [
+            "cc-rename-n"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v1",
+          "type": "int",
+          "args": [
+            "cc-rename-n"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v2",
+          "type": "int",
+          "args": [
+            "cc-rename-p"
+          ]
+        },
+        {
+          "op": "div",
+          "dest": "cc-rename-v3",
+          "type": "int",
+          "args": [
+            "cc-rename-v1",
+            "cc-rename-v2"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v4",
+          "type": "int",
+          "args": [
+            "cc-rename-p"
+          ]
+        },
+        {
+          "op": "mul",
+          "dest": "cc-rename-v5",
+          "type": "int",
+          "args": [
+            "cc-rename-v3",
+            "cc-rename-v4"
+          ]
+        },
+        {
+          "op": "sub",
+          "dest": "cc-rename-v6",
+          "type": "int",
+          "args": [
+            "cc-rename-v0",
+            "cc-rename-v5"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-ret",
+          "type": "int",
+          "args": [
+            "cc-rename-v6"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-inl",
+          "type": "bool",
+          "value": true
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

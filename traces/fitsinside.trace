@@ -1,0 +1,137 @@
+{
+  "functions": [
+    {
+      "name": "fitsInside",
+      "args": [
+        {
+          "name": "cc-rename-w1",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-h1",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-w2",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-h2",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-w1",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-h1",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-w2",
+          "type": "int",
+          "args": [
+            "cc-param-2"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-h2",
+          "type": "int",
+          "args": [
+            "cc-param-3"
+          ]
+        },
+        {
+          "op": "le",
+          "dest": "cc-rename-width_check",
+          "type": "bool",
+          "args": [
+            "cc-rename-w1",
+            "cc-rename-w2"
+          ]
+        },
+        {
+          "op": "le",
+          "dest": "cc-rename-height_check",
+          "type": "bool",
+          "args": [
+            "cc-rename-h1",
+            "cc-rename-h2"
+          ]
+        },
+        {
+          "op": "and",
+          "dest": "cc-rename-first_check",
+          "type": "bool",
+          "args": [
+            "cc-rename-width_check",
+            "cc-rename-height_check"
+          ]
+        },
+        {
+          "op": "le",
+          "dest": "cc-rename-widthheight_check",
+          "type": "bool",
+          "args": [
+            "cc-rename-w1",
+            "cc-rename-h2"
+          ]
+        },
+        {
+          "op": "le",
+          "dest": "cc-rename-heightwidth_check",
+          "type": "bool",
+          "args": [
+            "cc-rename-h1",
+            "cc-rename-w2"
+          ]
+        },
+        {
+          "op": "and",
+          "dest": "cc-rename-second_check",
+          "type": "bool",
+          "args": [
+            "cc-rename-widthheight_check",
+            "cc-rename-heightwidth_check"
+          ]
+        },
+        {
+          "op": "or",
+          "dest": "cc-rename-ret_val",
+          "type": "bool",
+          "args": [
+            "cc-rename-first_check",
+            "cc-rename-second_check"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-ret",
+          "type": "bool",
+          "args": [
+            "cc-rename-ret_val"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-inl",
+          "type": "bool",
+          "value": true
+        }
+      ],
+      "type": "bool"
+    }
+  ]
+}

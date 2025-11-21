@@ -1,0 +1,146 @@
+{
+  "functions": [
+    {
+      "name": "square",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "mul",
+          "dest": "cc-rename-result",
+          "type": "int",
+          "args": [
+            "cc-rename-n",
+            "cc-rename-n"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-ret",
+          "type": "int",
+          "args": [
+            "cc-rename-result"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-inl",
+          "type": "bool",
+          "value": true
+        }
+      ],
+      "type": "int"
+    },
+    {
+      "name": "mod",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-modulus",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-modulus",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "div",
+          "dest": "cc-rename-result",
+          "type": "int",
+          "args": [
+            "cc-rename-n",
+            "cc-rename-modulus"
+          ]
+        },
+        {
+          "op": "mul",
+          "dest": "cc-rename-multiple",
+          "type": "int",
+          "args": [
+            "cc-rename-result",
+            "cc-rename-modulus"
+          ]
+        },
+        {
+          "op": "sub",
+          "dest": "cc-rename-remainder",
+          "type": "int",
+          "args": [
+            "cc-rename-n",
+            "cc-rename-multiple"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-ret",
+          "type": "int",
+          "args": [
+            "cc-rename-remainder"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-inl",
+          "type": "bool",
+          "value": true
+        }
+      ],
+      "type": "int"
+    },
+    {
+      "name": "lsb",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-two",
+          "type": "int",
+          "value": 2
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

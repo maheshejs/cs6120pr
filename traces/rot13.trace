@@ -1,0 +1,54 @@
+{
+  "functions": [
+    {
+      "name": "rot",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-thirteen",
+          "type": "int",
+          "value": 13
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-twenty_six",
+          "type": "int",
+          "value": 26
+        },
+        {
+          "op": "add",
+          "dest": "cc-rename-shifted",
+          "type": "int",
+          "args": [
+            "cc-rename-n",
+            "cc-rename-thirteen"
+          ]
+        },
+        {
+          "op": "ge",
+          "dest": "cc-rename-over",
+          "type": "bool",
+          "args": [
+            "cc-rename-shifted",
+            "cc-rename-twenty_six"
+          ]
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

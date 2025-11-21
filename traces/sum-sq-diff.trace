@@ -1,0 +1,150 @@
+{
+  "functions": [
+    {
+      "name": "sumOfSquares",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-v0",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-res",
+          "type": "int",
+          "args": [
+            "cc-rename-v0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-v2",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-i",
+          "type": "int",
+          "args": [
+            "cc-rename-v2"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v3",
+          "type": "int",
+          "args": [
+            "cc-rename-i"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v4",
+          "type": "int",
+          "args": [
+            "cc-rename-n"
+          ]
+        },
+        {
+          "op": "le",
+          "dest": "cc-rename-v5",
+          "type": "bool",
+          "args": [
+            "cc-rename-v3",
+            "cc-rename-v4"
+          ]
+        }
+      ],
+      "type": "int"
+    },
+    {
+      "name": "squareOfSum",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-v0",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-res",
+          "type": "int",
+          "args": [
+            "cc-rename-v0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-v2",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-i",
+          "type": "int",
+          "args": [
+            "cc-rename-v2"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v3",
+          "type": "int",
+          "args": [
+            "cc-rename-i"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v4",
+          "type": "int",
+          "args": [
+            "cc-rename-n"
+          ]
+        },
+        {
+          "op": "le",
+          "dest": "cc-rename-v5",
+          "type": "bool",
+          "args": [
+            "cc-rename-v3",
+            "cc-rename-v4"
+          ]
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

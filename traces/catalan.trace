@@ -1,0 +1,45 @@
+{
+  "functions": [
+    {
+      "name": "catalan",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-one",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-zero",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "dest": "cc-rename-guard0",
+          "type": "bool",
+          "args": [
+            "cc-rename-n",
+            "cc-rename-zero"
+          ]
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

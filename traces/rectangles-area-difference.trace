@@ -1,0 +1,45 @@
+{
+  "functions": [
+    {
+      "name": "area",
+      "args": [
+        {
+          "name": "cc-rename-x",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-y",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-x",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-y",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "mul",
+          "dest": "cc-rename-area",
+          "type": "int",
+          "args": [
+            "cc-rename-x",
+            "cc-rename-y"
+          ]
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

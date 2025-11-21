@@ -1,0 +1,51 @@
+{
+  "functions": [
+    {
+      "name": "mccarthy91",
+      "args": [
+        {
+          "name": "cc-rename-n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-n",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-ten",
+          "type": "int",
+          "value": 10
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-eleven",
+          "type": "int",
+          "value": 11
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-hundred",
+          "type": "int",
+          "value": 100
+        },
+        {
+          "op": "gt",
+          "dest": "cc-rename-big",
+          "type": "bool",
+          "args": [
+            "cc-rename-n",
+            "cc-rename-hundred"
+          ]
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

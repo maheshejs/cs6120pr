@@ -1,0 +1,47 @@
+{
+  "functions": [
+    {
+      "name": "checkPrime",
+      "args": [
+        {
+          "name": "cc-rename-x",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-x",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v1",
+          "type": "int",
+          "args": [
+            "cc-rename-x"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-v2",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "le",
+          "dest": "cc-rename-v3",
+          "type": "bool",
+          "args": [
+            "cc-rename-v1",
+            "cc-rename-v2"
+          ]
+        }
+      ],
+      "type": "bool"
+    }
+  ]
+}

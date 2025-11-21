@@ -1,0 +1,77 @@
+{
+  "functions": [
+    {
+      "name": "up_arrow",
+      "args": [
+        {
+          "name": "cc-rename-num",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-arrows",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-repeats",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-num",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-arrows",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-repeats",
+          "type": "int",
+          "args": [
+            "cc-param-2"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-one",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-ans",
+          "type": "int",
+          "args": [
+            "cc-rename-num"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-i",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "lt",
+          "dest": "cc-rename-keepgoing",
+          "type": "bool",
+          "args": [
+            "cc-rename-i",
+            "cc-rename-repeats"
+          ]
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

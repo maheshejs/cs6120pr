@@ -1,0 +1,115 @@
+{
+  "functions": [
+    {
+      "name": "hamm_lsb",
+      "args": [
+        {
+          "name": "cc-rename-a",
+          "type": "int"
+        },
+        {
+          "name": "cc-rename-b",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-a",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-b",
+          "type": "int",
+          "args": [
+            "cc-param-1"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-zero",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-one",
+          "type": "int",
+          "value": 1
+        }
+      ],
+      "type": "int"
+    },
+    {
+      "name": "lsb",
+      "args": [
+        {
+          "name": "cc-rename-val",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-val",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-two",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "op": "div",
+          "dest": "cc-rename-div",
+          "type": "int",
+          "args": [
+            "cc-rename-val",
+            "cc-rename-two"
+          ]
+        },
+        {
+          "op": "mul",
+          "dest": "cc-rename-mul",
+          "type": "int",
+          "args": [
+            "cc-rename-div",
+            "cc-rename-two"
+          ]
+        },
+        {
+          "op": "sub",
+          "dest": "cc-rename-lsb",
+          "type": "int",
+          "args": [
+            "cc-rename-val",
+            "cc-rename-mul"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-ret",
+          "type": "int",
+          "args": [
+            "cc-rename-lsb"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-inl",
+          "type": "bool",
+          "value": true
+        }
+      ],
+      "type": "int"
+    }
+  ]
+}

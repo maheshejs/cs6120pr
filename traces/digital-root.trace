@@ -1,0 +1,144 @@
+{
+  "functions": [
+    {
+      "name": "peel_last_digit",
+      "args": [
+        {
+          "name": "cc-rename-input",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-input",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-ten",
+          "type": "int",
+          "value": 10
+        },
+        {
+          "op": "div",
+          "dest": "cc-rename-div_by_ten",
+          "type": "int",
+          "args": [
+            "cc-rename-input",
+            "cc-rename-ten"
+          ]
+        },
+        {
+          "op": "mul",
+          "dest": "cc-rename-mul_by_ten",
+          "type": "int",
+          "args": [
+            "cc-rename-div_by_ten",
+            "cc-rename-ten"
+          ]
+        },
+        {
+          "op": "sub",
+          "dest": "cc-rename-last_digit",
+          "type": "int",
+          "args": [
+            "cc-rename-input",
+            "cc-rename-mul_by_ten"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-ret",
+          "type": "int",
+          "args": [
+            "cc-rename-last_digit"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-inl",
+          "type": "bool",
+          "value": true
+        }
+      ],
+      "type": "int"
+    },
+    {
+      "name": "is_single_digit",
+      "args": [
+        {
+          "name": "cc-rename-input",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-input",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-ten",
+          "type": "int",
+          "value": 10
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-zero",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "op": "div",
+          "dest": "cc-rename-divided",
+          "type": "int",
+          "args": [
+            "cc-rename-input",
+            "cc-rename-ten"
+          ]
+        },
+        {
+          "op": "mul",
+          "dest": "cc-rename-mul_by_ten",
+          "type": "int",
+          "args": [
+            "cc-rename-divided",
+            "cc-rename-ten"
+          ]
+        },
+        {
+          "op": "eq",
+          "dest": "cc-rename-result",
+          "type": "bool",
+          "args": [
+            "cc-rename-mul_by_ten",
+            "cc-rename-zero"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-ret",
+          "type": "bool",
+          "args": [
+            "cc-rename-result"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-inl",
+          "type": "bool",
+          "value": true
+        }
+      ],
+      "type": "bool"
+    }
+  ]
+}

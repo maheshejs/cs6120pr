@@ -1,0 +1,45 @@
+{
+  "functions": [
+    {
+      "name": "generateNthRow",
+      "args": [
+        {
+          "name": "cc-rename-x",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "op": "id",
+          "dest": "cc-rename-x",
+          "type": "int",
+          "args": [
+            "cc-param-0"
+          ]
+        },
+        {
+          "op": "const",
+          "dest": "cc-rename-v0",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-prev",
+          "type": "int",
+          "args": [
+            "cc-rename-v0"
+          ]
+        },
+        {
+          "op": "id",
+          "dest": "cc-rename-v1",
+          "type": "int",
+          "args": [
+            "cc-rename-prev"
+          ]
+        }
+      ]
+    }
+  ]
+}
