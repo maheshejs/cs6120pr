@@ -1,3 +1,6 @@
 [submodule "embench"]
 	path = embench
 	url = https://github.com/embench/embench-iot
+[submodule "exprs-langs"]
+	path = exprs-langs
+	url = git@github.com:maheshejs/cpsc411pr.git
