@@ -3,6 +3,12 @@
 ## Layout
 
 ```
+############################# BRACKET ############################################
+├── exprs-langs/                        # Racket's subset languages                 
+├── bracket.rkt                         # bracket main compiler file
+├── exprs-benchmarks/                   # bracket benchmarks in exprs-lang-v7
+│   └── core/
+############################# BRACKET ############################################
 ├── src/                  
 │   ├── compiler.rkt                    # main compiler script
 │   ├── <...>.rkt                       # compiler passes
@@ -47,6 +53,11 @@
 
 ```bash
 bril2json < <test>.bril | racket src/compiler.rkt | bril2txt
+```
+ To run bracket:
+
+```bash
+cat <test>.rkt | racket exprs-langs/compiler.rkt | bril2txt
 ```
 
 ---
